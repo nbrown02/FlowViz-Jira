@@ -1,46 +1,35 @@
-# FlowViz - Metrics for teams using Azure DevOps
+# FlowViz - Metrics for teams using Jira
 ### What is it?
-This dashboard is for all Agile teams using Azure DevOps, Azure DevOps Server and/or TFS, who want to leverage their data to have better conversations and make more informed decisions. It was built due to years of frustration with 'velocity' and other traditional agile metrics. These are centered on flow, as well as providing forecasting techniques you can use to give customers greater confidence/transparency in your delivery.
+This dashboard is for all Agile teams using Jira Cloud, who want to leverage their data to have better conversations and make more informed decisions. It was built due to years of frustration with 'velocity' and other traditional agile metrics. These are centered on flow, as well as providing forecasting techniques you can use to give customers greater confidence/transparency in your delivery.
 
 ### Prerequisites
 * [Make sure you have the latest version of Power BI Desktop](https://aka.ms/pbiSingleInstaller)
-* Download the appropriate template file:
-  - [FlowViz - Project](https://github.com/nbrown02/FlowViz/raw/main/FlowViz%20(Project).pbit) (for a single Project)
-  - [FlowViz - Organization](https://github.com/nbrown02/FlowViz/raw/main/FlowViz%20(Organization).pbit) (for all Projects within an Organization)
+* Setup a [Jira API token]() and note it down
+* Download the template file:
 * Then you're good to get started!
 
 ### Connectivity
 * Open the .pbit file
-* Select http/https (only choose http if your Azure DevOps Server is HTTP)
-* Add the Analytics / Azure DevOps Server URL - for Azure DevOps services enter 'analytics.dev.azure.com' / for Azure DevOps Server enter your server details
-* Add your organization and project name
+* Add your Jira URL ()
+* Add your Jira Project Key ()
 
-Don't confuse the team name with the project name, a common mistake. If the URL you use is "http://dev.azure.com/Microsoft-UK/AzureDevOpsTeam/Database", then Microsoft-UK is the Organization Name, AzureDevOpsTeam is the Project name, Database is the team name.
+Don't confuse the project name with the project key, a common mistake. xxxxxxx
 
 * It should then look something like this:
 
-Azure DevOps Services:
-![alt text](https://raw.githubusercontent.com/nbrown02/FlowViz/main/Screenshots/AzDO%20Services%20Login.png)
-
-
-Azure DevOps Server:
-![alt text](https://raw.githubusercontent.com/nbrown02/FlowViz/main/Screenshots/AzDO%20Server%20Login.png)
+Image
 
 * Hit 'Load' 
-* If you are prompted for a login, you can choose:
-  - 'Organizational' and enter your Organization email/password (if required) and sign in
-  - 'Basic' and use a Personal Access Token (PAT) to login, entering it in the password field (user can be left as blank - make sure it has 'Read' access to Analytics)
-
-  ![alt text](https://docs.microsoft.com/en-us/azure/devops/report/powerbi/media/authentication-7.png?view=azure-devops)
+* You will be prompted for a login, choose Basic and enter:
+  - Your email associated with your Jira account for your username
+  - Your API token you created in the Prerequisities
 
 * Once signed in hit 'Load' and wait for your charts to populate!
 
 ### What do these charts mean? How can I learn more?
 There is a [FlowViz Fundamentals course now available](https://flowviz.thinkific.com/courses/fundamentals) - use the code LAUNCH20 for a 20% discount
 
-For questions on charts, how to use them and other questions check out the [Wiki](https://github.com/nbrown02/FlowViz/wiki).
-
-If you want to embed these charts into Azure DevOps, check out [this brilliant blog for guidance](https://www.donaldonsoftware.com/2020/04/Publishing-a-PowerBI-Report-to-an-Azure-DevOps-Dashboard/).
+For questions on charts, how to use them and other questions check out the [Wiki](https://github.com/nbrown02/FlowViz-Jira/wiki).
 
 ### Screenshots
 ![alt text](https://raw.githubusercontent.com/nbrown02/FlowViz/main/Screenshots/FlowViz.gif)
@@ -58,12 +47,7 @@ If you want to embed these charts into Azure DevOps, check out [this brilliant b
 ![alt text](https://raw.githubusercontent.com/nbrown02/FlowViz/main/Screenshots/FlowViz%20Page%206.png)
 
 ### Feedback
-FlowViz is built and maintained by [Nicolas Brown](https://www.nicolasbrown.co.uk/) and is published using [Agile Extensions](https://www.agileextensions.com/) for assistance (big thank you to them!)
-Please email nicolas.brown@outlook.com for ideas, improvements and feedback.
-
-You can also ask in the #flowviz channel in the Azure DevOps Club Slack community:
-
-[![Image](https://agile-extensions.gallerycdn.vsassets.io/extensions/agile-extensions/flowviz/1.0.11/1603967401335/images/join-the-club.png)](https://www.azuredevops.club/?utm_source=github-flowviz&utm_medium=github&utm_campaign=community)
+FlowViz is built and maintained by [Nicolas Brown](https://www.nicolasbrown.co.uk/). Please email nicolas.brown@outlook.com for ideas, improvements and feedback.
 
 ### Thank you
 
