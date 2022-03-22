@@ -25,7 +25,7 @@ Don't confuse the project name with the project key, a common mistake! Your proj
 
 ![alt text](https://raw.githubusercontent.com/nbrown02/FlowViz-Jira/main/Screenshots/Login2.png)
 
-* Once signed in hit 'Load' and wait for your charts to populate!
+* Then hit 'Connect' and wait for the data and charts to load!
 
 ### What do these charts mean? How can I learn more?
 There is a [FlowViz Fundamentals course now available](https://flowviz.thinkific.com/courses/fundamentals) - use the code LAUNCH20 for a 20% discount
