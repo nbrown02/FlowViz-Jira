@@ -13,9 +13,10 @@ This dashboard is for all Agile teams using Jira Cloud, who want to leverage the
 * Add your Jira URL ()
 * Add your Jira Project Key ()
 
-Don't confuse the project name with the project key, a common mistake. xxxxxxx
+Don't confuse the project name with the project key, a common mistake! Your project key will be in the URL when viewing an item.
 
 * It should then look something like this:
+![alt text](https://raw.githubusercontent.com/nbrown02/FlowViz-Jira/main/Screenshots/Login1.png)
 
 Image
 
@@ -23,6 +24,8 @@ Image
 * You will be prompted for a login, choose Basic and enter:
   - Your email associated with your Jira account for your username
   - Your API token you created in the Prerequisities
+
+![alt text](https://raw.githubusercontent.com/nbrown02/FlowViz-Jira/main/Screenshots/Login2.png)
 
 * Once signed in hit 'Load' and wait for your charts to populate!
 
@@ -32,19 +35,19 @@ There is a [FlowViz Fundamentals course now available](https://flowviz.thinkific
 For questions on charts, how to use them and other questions check out the [Wiki](https://github.com/nbrown02/FlowViz-Jira/wiki).
 
 ### Screenshots
-![alt text](https://raw.githubusercontent.com/nbrown02/FlowViz/main/Screenshots/FlowViz.gif)
+![alt text](https://raw.githubusercontent.com/nbrown02/FlowViz-Jira/main/Screenshots/FlowViz.gif)
 
-![alt text](https://raw.githubusercontent.com/nbrown02/FlowViz/main/Screenshots/FlowViz%20Dark%20Mode.gif)
+![alt text](https://raw.githubusercontent.com/nbrown02/FlowViz-Jira/main/Screenshots/FlowViz%20Dark%20Mode.gif)
 
-![alt text](https://raw.githubusercontent.com/nbrown02/FlowViz/main/Screenshots/FlowViz%20Page%202.png)
+![alt text](https://raw.githubusercontent.com/nbrown02/FlowViz-Jira/main/Screenshots/FlowViz%20Page%202.png)
 
-![alt text](https://raw.githubusercontent.com/nbrown02/FlowViz/main/Screenshots/FlowViz%20Page%203.png)
+![alt text](https://raw.githubusercontent.com/nbrown02/FlowViz-Jira/main/Screenshots/FlowViz%20Page%203.png)
 
-![alt text](https://raw.githubusercontent.com/nbrown02/FlowViz/main/Screenshots/FlowViz%20Page%204.png)
+![alt text](https://raw.githubusercontent.com/nbrown02/FlowViz-Jira/main/Screenshots/FlowViz%20Page%204.png)
 
-![alt text](https://raw.githubusercontent.com/nbrown02/FlowViz/main/Screenshots/FlowViz%20Page%205.png)
+![alt text](https://raw.githubusercontent.com/nbrown02/FlowViz-Jira/main/Screenshots/FlowViz%20Page%205.png)
 
-![alt text](https://raw.githubusercontent.com/nbrown02/FlowViz/main/Screenshots/FlowViz%20Page%206.png)
+![alt text](https://raw.githubusercontent.com/nbrown02/FlowViz-Jira/main/Screenshots/FlowViz%20Page%206.png)
 
 ### Feedback
 FlowViz is built and maintained by [Nicolas Brown](https://www.nicolasbrown.co.uk/). Please email nicolas.brown@outlook.com for ideas, improvements and feedback.
