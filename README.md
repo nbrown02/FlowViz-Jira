@@ -4,12 +4,12 @@ This dashboard is for all Agile teams using Jira Cloud, who want to leverage the
 
 ### Prerequisites
 * [Make sure you have the latest version of Power BI Desktop](https://aka.ms/pbiSingleInstaller)
-* Setup a [Jira API token]() and note it down
-* Download the template file:
+* Setup a [Jira API token]() and note it down (e.g. in Wordpad)
+* Download the [template file]()
 * Then you're good to get started!
 
 ### Connectivity
-* Open the .pbit file
+* Open the .pbit file in Power BI Desktop
 * Add your Jira URL ()
 * Add your Jira Project Key ()
 
