@@ -18,8 +18,6 @@ Don't confuse the project name with the project key, a common mistake! Your proj
 * It should then look something like this:
 ![alt text](https://raw.githubusercontent.com/nbrown02/FlowViz-Jira/main/Screenshots/Login1.png)
 
-Image
-
 * Hit 'Load' 
 * You will be prompted for a login, choose Basic and enter:
   - Your email associated with your Jira account for your username
