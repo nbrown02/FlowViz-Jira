@@ -33,9 +33,7 @@ There is a [FlowViz Fundamentals course now available](https://flowviz.thinkific
 For questions on charts, how to use them and other questions check out the [Wiki](https://github.com/nbrown02/FlowViz-Jira/wiki).
 
 ### Screenshots
-![alt text](https://raw.githubusercontent.com/nbrown02/FlowViz-Jira/main/Screenshots/FlowViz.gif)
-
-![alt text](https://raw.githubusercontent.com/nbrown02/FlowViz-Jira/main/Screenshots/FlowViz%20Dark%20Mode.gif)
+![alt text](https://raw.githubusercontent.com/nbrown02/FlowViz-Jira/main/Screenshots/FlowViz%20Page%201.png)
 
 ![alt text](https://raw.githubusercontent.com/nbrown02/FlowViz-Jira/main/Screenshots/FlowViz%20Page%202.png)
 
