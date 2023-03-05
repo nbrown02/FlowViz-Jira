@@ -18,7 +18,7 @@ Don't confuse the project name with the project key, a common mistake! Your proj
 * It should then look something like this:
 ![alt text](https://raw.githubusercontent.com/nbrown02/FlowViz-Jira/main/Screenshots/Login1.png)
 
-For multiple projects, it should look like:
+* For multiple projects, it should look like:
 ![alt text](https://raw.githubusercontent.com/nbrown02/FlowViz-Jira/main/Screenshots/Multiple.png)
 
 * Hit 'Load' 
