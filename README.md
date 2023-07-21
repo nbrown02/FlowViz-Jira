@@ -5,15 +5,13 @@ This dashboard is for all Agile teams using Jira Cloud, who want to leverage the
 ### Prerequisites
 * [Make sure you have the latest version of Power BI Desktop](https://aka.ms/pbiSingleInstaller)
 * [Follow these steps](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/) to setup a Jira API token and note it down (e.g. copy/paste into Notepad)
-* Download the appropriate template file:
-  - [FlowViz - Single Jira Project](https://github.com/nbrown02/FlowViz-Jira/raw/main/FlowViz%20(Jira).pbit) (for a single Jira Project)
-  - [FlowViz - Multiple Jira Projects](https://github.com/nbrown02/FlowViz-Jira/raw/main/FlowViz%20(Jira%20-%20Multiple%20Projects).pbit) (for multiple Jira projects)
+* [Download the template file](https://github.com/nbrown02/FlowViz-Jira/raw/main/FlowViz%20(Jira).pbit) (for a single Jira Project)
 * Then you're good to get started!
 
 ### Connectivity
 * Open the .pbit file in Power BI Desktop
 * Add your Jira URL 
-* Add your Jira Project Key 
+* Add your Jira Project Key(s)
 
 Don't confuse the project name with the project key, a common mistake! Your project key will be in the URL when viewing an item.
 
