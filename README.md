@@ -19,7 +19,7 @@ Don't confuse the project name with the project key, a common mistake! Your proj
 ![alt text](https://raw.githubusercontent.com/nbrown02/FlowViz-Jira/main/Screenshots/Login1.PNG)
 
 * For multiple projects, it should look like:
-![alt text](https://raw.githubusercontent.com/nbrown02/FlowViz-Jira/main/Screenshots/Multiple.PNG)
+![alt text](https://raw.githubusercontent.com/nbrown02/FlowViz-Jira/main/Screenshots/Multiple.jpg)
 
 * Hit 'Load' 
 * You will be prompted for a login, choose Basic and enter:
