@@ -16,9 +16,11 @@ This dashboard is for all Agile teams using Jira Cloud, who want to leverage the
 Don't confuse the project name with the project key, a common mistake! Your project key will be in the URL when viewing an item.
 
 * It should then look something like this:
+  
 ![alt text](https://raw.githubusercontent.com/nbrown02/FlowViz-Jira/main/Screenshots/Login1.PNG)
 
 * For multiple projects, it should look like:
+  
 ![alt text](https://raw.githubusercontent.com/nbrown02/FlowViz-Jira/main/Screenshots/Multiple.jpg)
 
 * Hit 'Load' 
