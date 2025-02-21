@@ -7,6 +7,7 @@ This dashboard is for all Agile teams using Jira Cloud, who want to leverage the
 * [Follow these steps](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/) to setup a Jira API token and note it down (e.g. copy/paste into Notepad)
 * [Download the template file](https://github.com/nbrown02/FlowViz-Jira/raw/main/FlowViz%20(Jira).pbit)
 * Then you're good to get started!
+* Please note: I don’t store, use or have access to any of your data/information. It’s all within your machines/network :)
 
 ### Connectivity
 * Open the .pbit file in Power BI Desktop
