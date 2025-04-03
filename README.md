@@ -12,7 +12,7 @@ This dashboard is for all Agile teams using Jira Cloud, who want to leverage the
 ### Connectivity
 * Open the .pbit file in Power BI Desktop
 * Add your Jira URL 
-* Add your Jira Project Key
+* Add your Jira Project Key (ensure this is capitalised!)
 
 Don't confuse the project name with the project key, a common mistake! Your project key will be in the URL when viewing an item.
 
