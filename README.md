@@ -5,7 +5,9 @@ This dashboard is for all Agile teams using Jira (Cloud or Server/Data Center). 
 ### Prerequisites
 * [Make sure you have the latest version of Power BI Desktop](https://aka.ms/pbiSingleInstaller)
 * [Follow these steps](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/) to setup a Jira API token and note it down (e.g. copy/paste into Notepad)
-* [Download the template file](https://github.com/nbrown02/FlowViz-Jira/raw/main/FlowViz%20(Jira).pbit)
+* Download the template file:
+  - [Jira Cloud](https://github.com/nbrown02/FlowViz-Jira/raw/main/FlowViz%20(Jira).pbit)
+  - [Jira Server/Data Center](https://github.com/nbrown02/FlowViz-Jira/raw/refs/heads/main/FlowViz%20(Jira%20Server).pbit)
 * Then you're good to get started!
 * Please note: I don’t store, use or have access to any of your data/information. It’s all within your machines/network :)
 
