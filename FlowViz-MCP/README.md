@@ -28,7 +28,7 @@ For the Azure DevOps version, see [FlowViz](https://github.com/nbrown02/FlowViz/
 ## Prerequisites
 
 - Your FlowViz report is **published to the Power BI Service** (not just open locally in Power BI Desktop)
-- [Node.js](https://nodejs.org/) version 18 or later installed on your machine
+- [Node.js](https://nodejs.org/) version 18 or later installed on your machine (choose the LTS version)
 
 ## Setup
 
@@ -42,39 +42,14 @@ git clone https://github.com/nbrown02/FlowViz-Jira.git
 **If not**, download and unzip from this link:
 https://github.com/nbrown02/FlowViz-Jira/archive/refs/heads/main.zip
 
-### 2. Run the setup wizard
+### 2. Run the setup
 
-**Windows:**
-1. Open the unzipped/cloned folder and navigate into the `FlowViz-MCP` folder
-2. Click in the address bar at the top of File Explorer, type `cmd` and press Enter
-3. Run this command:
+Open the `FlowViz-MCP` folder and:
 
-```
-npm install
-```
+- **Windows:** Double-click `WindowsSetup.bat`
+- **Mac:** Double-click `MacSetup.sh` (if it opens as a text file, right-click it, choose Open With, then Terminal)
 
-4. Then run this command:
-
-```
-npm run setup
-```
-
-**Mac:**
-1. Open Terminal (press Cmd+Space, type "Terminal", press Enter)
-2. Type `cd ` (with a space after it), then drag the `FlowViz-MCP` folder from Finder into the Terminal window and press Enter
-3. Run this command:
-
-```
-npm install
-```
-
-4. Then run this command:
-
-```
-npm run setup
-```
-
-The setup wizard will ask you a few questions, tell you exactly where to find each answer, and do the rest automatically.
+The setup wizard will check everything is installed, then ask you a few questions. It tells you exactly where to find each answer and does the rest automatically.
 
 ## Privacy
 
