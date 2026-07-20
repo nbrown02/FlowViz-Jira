@@ -1,10 +1,16 @@
 #!/usr/bin/env node
 
 import { createInterface } from "node:readline";
-import { mkdirSync, writeFileSync, existsSync, readFileSync } from "node:fs";
+import { mkdirSync, writeFileSync, existsSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { homedir, platform } from "node:os";
-import { execSync } from "node:child_process";
+import {
+  PublicClientApplication,
+  type DeviceCodeRequest,
+} from "@azure/msal-node";
+
+const CLIENT_ID = "eb55ace0-b1c9-4a23-a4ec-676a241c0a16";
+const POWER_BI_SCOPE = "https://analysis.windows.net/powerbi/api/.default";
 
 const rl = createInterface({ input: process.stdin, output: process.stdout });
 
@@ -21,25 +27,76 @@ function printBlank() {
 }
 
 function printDivider() {
-  console.log("─".repeat(60));
+  console.log("-".repeat(60));
 }
 
-function isValidGuid(val: string): boolean {
-  return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(val);
+interface ParsedUrl {
+  workspaceId: string;
+  reportId: string;
 }
 
-async function askGuid(label: string, helpText: string): Promise<string> {
-  printBlank();
-  print(helpText);
-  printBlank();
+function parseUrl(url: string): ParsedUrl | null {
+  const groupsMatch = url.match(/groups\/([0-9a-f-]{36})/i);
+  const reportsMatch = url.match(/reports\/([0-9a-f-]{36})/i);
 
-  while (true) {
-    const val = await ask(`  ${label}: `);
-    if (isValidGuid(val)) return val;
-    print(`  That doesn't look right. It should be a format like: 12345678-abcd-1234-abcd-1234567890ab`);
-    print(`  Try copying it again.`);
-    printBlank();
+  if (groupsMatch && reportsMatch) {
+    return {
+      workspaceId: groupsMatch[1],
+      reportId: reportsMatch[1],
+    };
   }
+  return null;
+}
+
+async function authenticate(tenantId: string): Promise<{ accessToken: string; resolvedTenantId: string }> {
+  const msalApp = new PublicClientApplication({
+    auth: {
+      clientId: CLIENT_ID,
+      authority: `https://login.microsoftonline.com/${tenantId}`,
+    },
+  });
+
+  const request: DeviceCodeRequest = {
+    scopes: [POWER_BI_SCOPE],
+    deviceCodeCallback: (response) => {
+      printBlank();
+      print(`  ${response.message}`);
+      printBlank();
+    },
+  };
+
+  const result = await msalApp.acquireTokenByDeviceCode(request);
+  if (!result) {
+    throw new Error("Authentication failed");
+  }
+
+  return {
+    accessToken: result.accessToken,
+    resolvedTenantId: result.tenantId || tenantId,
+  };
+}
+
+async function getDatasetId(
+  accessToken: string,
+  workspaceId: string,
+  reportId: string
+): Promise<string> {
+  const url = `https://api.powerbi.com/v1.0/myorg/groups/${workspaceId}/reports/${reportId}`;
+  const response = await fetch(url, {
+    headers: { Authorization: `Bearer ${accessToken}` },
+  });
+
+  if (!response.ok) {
+    const body = await response.text();
+    throw new Error(`Failed to look up dataset: ${response.status} ${body}`);
+  }
+
+  const data = await response.json();
+  if (!data.datasetId) {
+    throw new Error("Could not find a dataset linked to this report.");
+  }
+
+  return data.datasetId;
 }
 
 async function askChoice(question: string, options: string[]): Promise<string> {
@@ -63,7 +120,6 @@ async function main() {
   printDivider();
   print("  This will set up the FlowViz MCP server so you can query");
   print("  your flow metrics from Claude Desktop.");
-  print("  It takes about 2 minutes. You can quit any time with Ctrl+C.");
   printDivider();
 
   // Step 1: Source type
@@ -73,37 +129,56 @@ async function main() {
   );
   const sourceType = sourceChoice === "Azure DevOps" ? "ado" : "jira";
 
-  // Step 2: Workspace ID
-  const workspaceId = await askGuid(
-    "Workspace ID",
-    `Open your FlowViz report in the Power BI Service (app.powerbi.com).\n` +
-    `  Look at the URL in your browser. It will look like:\n\n` +
-    `  https://app.powerbi.com/groups/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/reports/...\n\n` +
-    `  Copy the value after /groups/ (the long ID with dashes).`
+  // Step 2: Power BI URL
+  printBlank();
+  print("  Open your FlowViz report in the Power BI Service (app.powerbi.com).");
+  print("  Copy the full URL from your browser's address bar and paste it below.");
+  printBlank();
+
+  let parsed: ParsedUrl | null = null;
+  while (!parsed) {
+    const url = await ask("  Power BI URL: ");
+    parsed = parseUrl(url);
+    if (!parsed) {
+      printBlank();
+      print("  That doesn't look like a Power BI report URL.");
+      print("  It should look something like:");
+      print("  https://app.powerbi.com/groups/xxx/reports/xxx/...");
+      print("  Try copying it again.");
+      printBlank();
+    }
+  }
+
+  print(`  Workspace ID: ${parsed.workspaceId}`);
+  print(`  Report ID:    ${parsed.reportId}`);
+
+  // Step 3: Authenticate
+  printBlank();
+  printDivider();
+  print("  Now sign in with your Microsoft account.");
+  print("  This is the same account you use to access Power BI.");
+  printDivider();
+
+  const { accessToken, resolvedTenantId } = await authenticate("common");
+
+  print("  Signed in successfully.");
+
+  // Step 4: Look up dataset ID from report ID
+  printBlank();
+  print("  Looking up your FlowViz dataset...");
+
+  const datasetId = await getDatasetId(
+    accessToken,
+    parsed.workspaceId,
+    parsed.reportId
   );
 
-  // Step 3: Dataset ID
-  const datasetId = await askGuid(
-    "Dataset ID",
-    `Still in the Power BI Service, click on the dataset for your FlowViz report.\n` +
-    `  (You can find it under your workspace's dataset list.)\n` +
-    `  The URL will look like:\n\n` +
-    `  https://app.powerbi.com/groups/.../datasets/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/...\n\n` +
-    `  Copy the value after /datasets/.`
-  );
-
-  // Step 4: Tenant ID
-  const tenantId = await askGuid(
-    "Tenant ID",
-    `Go to portal.azure.com and search for "Microsoft Entra ID" in the search bar.\n` +
-    `  Click on it, and you'll see a "Tenant ID" on the Overview page.\n` +
-    `  Copy that value.`
-  );
+  print(`  Dataset ID:   ${datasetId}`);
 
   // Write config
   printBlank();
   printDivider();
-  print("  Writing config file...");
+  print("  Saving config...");
   printDivider();
 
   const configDir = join(homedir(), ".flowviz-mcp");
@@ -115,31 +190,14 @@ async function main() {
 
   const config = {
     sourceType,
-    workspaceId,
+    workspaceId: parsed.workspaceId,
     datasetId,
-    tenantId,
-    clientId: "eb55ace0-b1c9-4a23-a4ec-676a241c0a16",
+    tenantId: resolvedTenantId,
+    clientId: CLIENT_ID,
   };
 
   writeFileSync(configPath, JSON.stringify(config, null, 2) + "\n");
   print(`  Saved to: ${configPath}`);
-
-  // Build
-  printBlank();
-  printDivider();
-  print("  Building the MCP server...");
-  printDivider();
-  printBlank();
-
-  try {
-    execSync("npm run build", { stdio: "inherit" });
-    print("  Build complete.");
-  } catch {
-    print("  Build failed. Make sure you ran 'npm install' first.");
-    print("  Run: npm install && npm run build");
-    rl.close();
-    process.exit(1);
-  }
 
   // Generate Claude Desktop config snippet
   printBlank();
@@ -184,10 +242,7 @@ async function main() {
   printDivider();
   printBlank();
   print("  After adding that, restart Claude Desktop.");
-  print("  The first time it runs, you'll be asked to sign in with your");
-  print("  Microsoft account in a browser. That only happens once.");
-  printBlank();
-  print("  Then try asking: \"What's our cycle time 85th percentile?\"");
+  print('  Then try asking: "What\'s our cycle time 85th percentile?"');
   printBlank();
   printDivider();
   print("  Setup complete!");
