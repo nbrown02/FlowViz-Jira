@@ -2,7 +2,7 @@
 
 Query your FlowViz flow metrics directly from Claude (or any MCP-compatible client) by chatting in natural language. This MCP server connects to your published FlowViz Power BI dataset and returns the same numbers you see in your dashboards.
 
-For the Azure DevOps version, see [FlowViz](https://github.com/nbrown02/FlowViz).
+For the Azure DevOps version, see [FlowViz](https://github.com/nbrown02/FlowViz/tree/main/FlowViz-MCP).
 
 ## What can you ask?
 
@@ -32,24 +32,49 @@ For the Azure DevOps version, see [FlowViz](https://github.com/nbrown02/FlowViz)
 
 ## Setup
 
-Open a terminal, navigate to this folder, and run:
+### 1. Get the files onto your machine
 
-```bash
+**If you're comfortable with Git:**
+```
+git clone https://github.com/nbrown02/FlowViz-Jira.git
+```
+
+**If not**, download and unzip from this link:
+https://github.com/nbrown02/FlowViz-Jira/archive/refs/heads/main.zip
+
+### 2. Run the setup wizard
+
+**Windows:**
+1. Open the unzipped/cloned folder and navigate into the `FlowViz-MCP` folder
+2. Click in the address bar at the top of File Explorer, type `cmd` and press Enter
+3. Run this command:
+
+```
 npm install
+```
+
+4. Then run this command:
+
+```
 npm run setup
 ```
 
-The setup wizard will walk you through everything step by step. It will:
+**Mac:**
+1. Open Terminal (press Cmd+Space, type "Terminal", press Enter)
+2. Type `cd ` (with a space after it), then drag the `FlowViz-MCP` folder from Finder into the Terminal window and press Enter
+3. Run this command:
 
-1. Ask which version of FlowViz you use (Azure DevOps or Jira)
-2. Ask for your Power BI workspace ID (with instructions on where to find it)
-3. Ask for your Power BI dataset ID (same)
-4. Ask for your Azure tenant ID (same)
-5. Save your config file automatically
-6. Build the server
-7. Give you the exact JSON to paste into your Claude Desktop config
+```
+npm install
+```
 
-That's it. After adding the config to Claude Desktop and restarting, the first time it runs you'll be asked to sign in with your Microsoft account in a browser. That only happens once.
+4. Then run this command:
+
+```
+npm run setup
+```
+
+The setup wizard will ask you a few questions, tell you exactly where to find each answer, and do the rest automatically.
 
 ## Privacy
 
