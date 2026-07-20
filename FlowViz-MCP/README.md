@@ -32,106 +32,24 @@ For the Azure DevOps version, see [FlowViz](https://github.com/nbrown02/FlowViz)
 
 ## Setup
 
-### 1. Find your Power BI workspace ID and dataset ID
-
-Open your published FlowViz report in the Power BI Service at app.powerbi.com. Look at the URL in your browser:
-
-```
-https://app.powerbi.com/groups/WORKSPACE_ID/reports/...
-```
-
-Copy the value after `/groups/` -- that is your **workspace ID**.
-
-Then navigate to the dataset for your FlowViz report (Settings > Datasets or click the dataset name). The URL will contain:
-
-```
-https://app.powerbi.com/groups/WORKSPACE_ID/datasets/DATASET_ID/...
-```
-
-Copy the **dataset ID**.
-
-### 2. Find your tenant ID
-
-Go to https://portal.azure.com, search for "Microsoft Entra ID" (or "Azure Active Directory"), and click on it. Your **Tenant ID** is shown on the Overview page.
-
-### 3. Create the config file
-
-Create a folder and config file on your machine:
-
-**Windows:**
-```
-mkdir %USERPROFILE%\.flowviz-mcp
-```
-Then create the file `%USERPROFILE%\.flowviz-mcp\config.json`
-
-**Mac/Linux:**
-```bash
-mkdir -p ~/.flowviz-mcp
-```
-Then create the file `~/.flowviz-mcp/config.json`
-
-Paste this into the file, replacing the placeholder values with your own:
-
-```json
-{
-  "sourceType": "jira",
-  "workspaceId": "your-workspace-id-here",
-  "datasetId": "your-dataset-id-here",
-  "tenantId": "your-tenant-id-here",
-  "clientId": "eb55ace0-b1c9-4a23-a4ec-676a241c0a16"
-}
-```
-
-The `clientId` is always `eb55ace0-b1c9-4a23-a4ec-676a241c0a16` -- this is the same for everyone.
-
-### 4. Build the MCP server
-
-From the root of this repository:
+Open a terminal, navigate to this folder, and run:
 
 ```bash
-cd FlowViz-MCP
 npm install
-npm run build
+npm run setup
 ```
 
-### 5. Add to Claude Desktop
+The setup wizard will walk you through everything step by step. It will:
 
-Open your Claude Desktop settings and find the MCP configuration file (`claude_desktop_config.json`). Add the following, replacing the path with where you cloned/downloaded this repo:
+1. Ask which version of FlowViz you use (Azure DevOps or Jira)
+2. Ask for your Power BI workspace ID (with instructions on where to find it)
+3. Ask for your Power BI dataset ID (same)
+4. Ask for your Azure tenant ID (same)
+5. Save your config file automatically
+6. Build the server
+7. Give you the exact JSON to paste into your Claude Desktop config
 
-**Windows:**
-```json
-{
-  "mcpServers": {
-    "flowviz": {
-      "command": "node",
-      "args": ["C:\\path\\to\\FlowViz-Jira\\FlowViz-MCP\\dist\\index.js"]
-    }
-  }
-}
-```
-
-**Mac/Linux:**
-```json
-{
-  "mcpServers": {
-    "flowviz": {
-      "command": "node",
-      "args": ["/path/to/FlowViz-Jira/FlowViz-MCP/dist/index.js"]
-    }
-  }
-}
-```
-
-### 6. Authenticate
-
-The first time the server runs, it will prompt you to open a browser and sign in with your Microsoft account (the same one you use to access your Power BI workspace):
-
-```
-To sign in, use a web browser to open https://microsoft.com/devicelogin
-and enter the code XXXXXXX to authenticate.
-```
-
-This only happens once. After that, your login is cached locally on your machine.
+That's it. After adding the config to Claude Desktop and restarting, the first time it runs you'll be asked to sign in with your Microsoft account in a browser. That only happens once.
 
 ## Privacy
 
