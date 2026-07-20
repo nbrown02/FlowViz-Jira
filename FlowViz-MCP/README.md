@@ -49,7 +49,13 @@ Open the `FlowViz-MCP` folder and:
 - **Windows:** Double-click `WindowsSetup.bat`
 - **Mac:** Double-click `MacSetup.sh` (if it opens as a text file, right-click it, choose Open With, then Terminal)
 
-The setup wizard will check everything is installed, then ask you a few questions. It tells you exactly where to find each answer and does the rest automatically.
+The setup wizard will:
+
+1. Ask whether you use Azure DevOps or Jira
+2. Ask you to paste the URL of your FlowViz report from Power BI (just copy it from your browser)
+3. Ask you to sign in with your Microsoft account (a browser window will open)
+4. Automatically find your dataset and save the config
+5. Give you the exact text to paste into Claude Desktop
 
 ## Privacy
 
