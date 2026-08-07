@@ -40,7 +40,7 @@ For questions on charts, how to use them and other questions check out the [Wiki
 
 ![alt text](https://raw.githubusercontent.com/nbrown02/FlowViz-Jira/main/Screenshots/FlowViz%20Page%202.png)
 
-![alt text](https://raw.githubusercontent.com/nbrown02/FlowViz-Jira/main/Screenshots/FlowViz%20Page%203.png)
+<img width="584" height="330" alt="image" src="https://github.com/user-attachments/assets/8c516f25-6130-4a38-b9b9-a736f07f3210" />
 
 ![alt text](https://raw.githubusercontent.com/nbrown02/FlowViz-Jira/main/Screenshots/FlowViz%20Page%204.png)
 
